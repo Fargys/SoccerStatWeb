@@ -1,7 +1,9 @@
-package Models;
+package entity;
 
-public class Team implements Comparable {
-    //fields
+import java.io.Serializable;
+
+public class Team implements Comparable, Serializable {
+    private Long id;
     private String name;
     private int games;
     private int wins;
@@ -10,13 +12,21 @@ public class Team implements Comparable {
     private int scored;
     private int missed;
     private int points;
-    private long championship_id;
+    private Long championship_id;
+    
+    public static Long IdCounter = 1L;
 
     //constructor
     public Team() {
     }
-
+    
     //getters and setters
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public Long getId() {
+        return id;
+    }
     public String getName() {
         return name;
     }
@@ -65,12 +75,13 @@ public class Team implements Comparable {
     public void setPoints(int points) {
         this.points = points;
     }
-    public long getChampionship_id() {
+    public Long getChampionship_id() {
         return championship_id;
     }
-    public void setChampionship_id(long championship_id) {
-        this.championship_id = championship_id;
+    public void setChampionship_id(Long championship) {
+        this.championship_id = championship;
     }
+    
 
 
     @Override

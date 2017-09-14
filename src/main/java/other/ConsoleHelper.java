@@ -1,4 +1,4 @@
-package Helpers;
+package other;
 
 import java.io.*;
 
@@ -19,7 +19,7 @@ public class ConsoleHelper implements Closeable {
         while (true) {
             try {
                 return Integer.parseInt(reader.readLine());
-            } catch (IOException e) {
+            } catch (IOException ex) {
                 System.out.println("Введите корректные данные");
             }
         }
