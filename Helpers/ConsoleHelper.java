@@ -1,9 +1,9 @@
-package ConsoleHelper;
+package Helpers;
 
 import java.io.*;
 
 public class ConsoleHelper implements Closeable {
-    static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    public static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
     public static String readString() {
         while (true) {
@@ -14,7 +14,7 @@ public class ConsoleHelper implements Closeable {
             }
         }
     }
-
+    
     public static int readInt() {
         while (true) {
             try {
@@ -27,12 +27,17 @@ public class ConsoleHelper implements Closeable {
 
     /**
      * The method specifies the range of allowed values
+     * 
+     * @param from min allowed value
+     * @param to max allowed value
+     * 
+     * @return value selected by user
      */
     public static int readInt(int from, int to) {
         while (true) {
             try {
                 int result = Integer.parseInt(reader.readLine());
-                if (result < from && result > to) throw new IOException();
+                if (result < from && result > to) {throw new IOException();}
                 return result;
             } catch (IOException e) {
                 System.out.println("Введите корректные данные");
