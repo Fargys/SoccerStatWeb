@@ -3,15 +3,12 @@ package entity;
 import java.io.Serializable;
 
 public class Championship implements Serializable {
-    //fields
     private Long id;
     private String name;
 
-    //constructor
     public Championship() {
     }
 
-    //getters and setters
     public Long getId() {
         return id;
     }

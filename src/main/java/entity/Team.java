@@ -13,14 +13,10 @@ public class Team implements Comparable, Serializable {
     private int missed;
     private int points;
     private Long championship_id;
-    
-    public static Long IdCounter = 1L;
 
-    //constructor
     public Team() {
     }
     
-    //getters and setters
     public void setId(Long id) {
         this.id = id;
     }
@@ -81,48 +77,6 @@ public class Team implements Comparable, Serializable {
     public void setChampionship_id(Long championship) {
         this.championship_id = championship;
     }
-    
-
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(fixLength(this.name, 16, true));
-        sb.append(fixLength(String.valueOf(this.games), 3, false));
-        sb.append(fixLength(String.valueOf(this.wins), 3, false));
-        sb.append(fixLength(String.valueOf(this.draws), 3, false));
-        sb.append(fixLength(String.valueOf(this.losses), 3, false));
-        sb.append(fixLength(String.valueOf(this.scored), 4, false));
-        sb.append(":");
-        sb.append(fixLength(String.valueOf(this.missed), 3, true));
-        sb.append(fixLength(String.valueOf(this.points), 3, false));
-        sb.toString();
-        return sb.toString();
-    }
-
-    /**
-     * Method formats string by length
-     * @param string String for formatting
-     * @param length Length to which to the string add empty chars
-     * @param endString if true - add to the end string, if false - to begin.
-     * @return formatted string
-     */
-    private static String fixLength(String string, int length, boolean endString) {
-        StringBuilder sb = new StringBuilder();
-        if(endString){
-            sb.append(string);
-            while(sb.toString().length() != length){
-                sb.append(" ");
-            }
-        } else {
-            int item = length - string.length();
-            for(int i = 0; i < item; i++) {
-                sb.append(" ");
-            }
-            sb.append(string);
-        }
-        return sb.toString();
-    }
 
     @Override
     public int compareTo(Object o) {
@@ -133,9 +87,14 @@ public class Team implements Comparable, Serializable {
 
         if(this.wins > team.wins) return -1;
         else if(this.wins < team.wins) return 1;
+        
+        
+        int thisDifference = this.scored - this.missed;
+        int teamDifference = team.scored - team.missed;
+        
 
-        if(this.scored > team.scored) return -1;
-        else if(this.scored < team.scored) return 1;
+        if(thisDifference > teamDifference) return -1;
+        else if(thisDifference < teamDifference) return 1;
 
         if(this.games < team.games) return -1;
         else if(this.games > team.games) return 1;
