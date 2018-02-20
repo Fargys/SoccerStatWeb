@@ -45,7 +45,17 @@ public class ConsoleHelper implements Closeable {
         for(int i = 0; i < teamsForPrinting.size(); i++){
             Team teamForPrinting = teamsForPrinting.get(i);
             
-            writeMessageWithoutTransitionToNewLine(i + 1 + ". "); TeamController.print(teamForPrinting);
+            int teamPosition = i + 1;
+            
+            StringBuilder sb = new StringBuilder();
+            
+            if(teamPosition < 10) sb.append(" ");
+            
+            sb.append(teamPosition);
+            sb.append(". ");
+            
+            
+            writeMessageWithoutTransitionToNewLine(sb.toString()); TeamController.print(teamForPrinting);
         }
         
         writeEmptyLine();
@@ -129,7 +139,16 @@ public class ConsoleHelper implements Closeable {
         writeMessage("Select team:");
         
         for(int i = 0; i < teams.size(); i++){
-            writeMessageWithoutTransitionToNewLine(i + 1 + ". "); TeamController.print(teams.get(i));
+            int teamPosition = i + 1;
+            
+            StringBuilder sb = new StringBuilder();
+            
+            if(teamPosition < 10) sb.append(" ");
+            
+            sb.append(teamPosition);
+            sb.append(". ");
+            
+            writeMessageWithoutTransitionToNewLine(sb.toString()); TeamController.print(teams.get(i));
         }
         writeEmptyLine();
         
