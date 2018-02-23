@@ -64,6 +64,12 @@ public class ChampionshipController {
         
         List<Team> teamsOfUpdatingChamp = TeamController.getAllTeams(currentChampionshipId);
         
+        if(teamsOfUpdatingChamp.size() < 2) {
+                writeEmptyLine();
+                writeMessage("Not enought teams for a match.");
+                return;
+            }
+        
         Team homeTeam = getSelectedTeam(teamsOfUpdatingChamp);
         Team guestTeam = getSelectedTeam(teamsOfUpdatingChamp);
         
